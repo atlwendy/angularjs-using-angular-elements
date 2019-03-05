@@ -1,0 +1,46 @@
+
+
+    <!doctype html>
+    <html ng-app>
+      <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+      </head>
+      <body>
+        <div>
+          
+          <h1>Hello AngularJs! v 1.4.3</h1>
+          <ts-button 
+            buttonType="search"
+            [isDisabled]="false"
+            [collapsed]="false"
+            theme="warn"
+            format="hollow"
+          >Click Me!!</ts-button>
+        </div>
+        <script type="text/javascript" src="elements.js"></script>
+        <script>
+          let button = document.querySelector('ts-button');
+          let buttonHTMLElement = document.querySelector('.c-button');
+          let count = 0;
+          button.addEventListener('click', (event) => {
+            if (count % 2 == 0) {
+              buttonHTMLElement.textContent = "Click again!!";
+              button.format = 'fill';
+              button.theme = "primary";
+              button.collapsed = 'true';
+            } else {
+              buttonHTMLElement.textContent = "Click Me!!";
+              button.format = 'hollow';
+              button.theme = "warn";
+              button.collapsed = 'false';
+            }
+            count++;
+            if (count == 5) {
+              button.isDisabled = true;
+            }
+          });
+        </script>
+      </body>
+    </html>
+
+
