@@ -11,7 +11,7 @@
           angular.module('checkboxExample', [])
             .controller('ExampleController', ['$scope', function ($scope) {
               $scope.checkboxModel = {
-                value1: true,
+                value1: false,
                 value2: 'YES'
               };
             }]);
@@ -24,16 +24,18 @@
           <form name="myForm" ng-controller="ExampleController">
             <ts-checkbox
               label="Value1"
-              [(ng-model)]="checkboxModel.value1"
+              ng-model="checkboxModel.value1"
             >Value 1</ts-checkbox>
             <ts-checkbox
               label="Value2"
-              [(ng-model)]="checkboxModel.value2"
+              ng-model="checkboxModel.value2"
             >Value 2</ts-checkbox>
             
             <tt>value1 = {{checkboxModel.value1}}</tt><br />
             <tt>value2 = {{checkboxModel.value2}}</tt><br />
+            <tt>Using ng-bind <span style="color: green" ng-bind="checkboxModel.value1"></span></tt>
           </form>
+
         </div>
         
       </body>
