@@ -1,41 +1,60 @@
-
-
-    <!doctype html>
+  <!doctype html>
     <html lang="en">
       <head>
-        <script src="//code.angularjs.org/1.4.3/angular.min.js"></script>
-	      <script type="text/javascript" src="checkboxElements-3-14.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="//code.angularjs.org/1.7.8/angular.min.js"></script>
+	      <script type="text/javascript" src="checkboxElements-3-15.js"></script>
       </head>
       <body ng-app="checkboxExample" ng-controller="ExampleController">
         <script>
           angular.module('checkboxExample', [])
             .controller('ExampleController', ['$scope', function ($scope) {
               $scope.checkboxModel = {
-                value1: false,
-                value2: 'YES'
+                value1: true,
+                value2: 'YES',
+                value3: true,
+              };
+              $scope.onInputChange = ev => {
+                console.log('Got Checkbox 1 value: ', ev.detail);
               };
             }]);
+
         </script>
         <div>
           
-          <h1>Hello AngularJs! v 1.4.3</h1>
+          <h1>Hello AngularJs! v 1.7.8</h1>
 
 
           <form name="myForm" ng-controller="ExampleController">
             <ts-checkbox
-              label="Value1"
+              ng-prop-whatever="checkboxModel.value1"
+              ng-on-input_change="onInputChange($event)"
               ng-model="checkboxModel.value1"
-            >Value 1</ts-checkbox>
+            >Checkbox 1</ts-checkbox>
             <ts-checkbox
               label="Value2"
-              ng-model="checkboxModel.value2"
-            >Value 2</ts-checkbox>
+              ng-prop-db="checkboxModel.value2"
+            >Checkbox 2</ts-checkbox>
             
+            <tt>value1 = {{checkboxModel.value1}}</tt><br />
+            <tt>value2 = {{checkboxModel.value2}} disabled</tt><br />
+            <tt>Using ng-bind <span style="color: green" ng-bind="checkboxModel.value1"></span></tt>
+          </form>
+          <hr>
+          <hr>
+
+          <form name="myForm" ng-controller="ExampleController">
+            <label>Value1:
+              <input type="checkbox" ng-model="checkboxModel.value1">
+            </label><br />
+            <label>Value2:
+              <input type="checkbox" ng-model="checkboxModel.value2" ng-true-value="'YES'" ng-false-value="'NO'">
+            </label><br />
             <tt>value1 = {{checkboxModel.value1}}</tt><br />
             <tt>value2 = {{checkboxModel.value2}}</tt><br />
             <tt>Using ng-bind <span style="color: green" ng-bind="checkboxModel.value1"></span></tt>
           </form>
-
         </div>
         
       </body>
